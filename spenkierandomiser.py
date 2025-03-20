@@ -1,4 +1,12 @@
 import random
+import tkinter
+
+window = tkinter.Tk()#Create window variable
+window.geometry("900x700+300+50")#Set window size and position on screen
+window.title("Spenkie Randomiser")#Set window title
+window.configure(bg="gray")#Set window background colour
+screenW = window.winfo_screenwidth() #Get screen width and height
+screenH = window.winfo_screenheight()
 
 adj = ["abundant",
     "accessible",
@@ -2768,7 +2776,6 @@ noun = ['people',
     'wrap',
     'yesterday',]
 
-
 def spenksGen():
     adjNum = random.randint(0, len(adj))
     nounNum = random.randint(0, len(noun))
@@ -2779,9 +2786,21 @@ def spenksGen():
     chosenAdj = chosenAdj.capitalize()
     chosenNoun = chosenNoun.capitalize()
 
-    print(f"{chosenAdj}{chosenNoun}12")
+    gamertag = f"{chosenAdj}{chosenNoun}12"
+    print(gamertag)
+    gtLabel = tkinter.Label(window, width=20, height=2, bg="white", fg="black", text=gamertag)
+    gtLabel.place(x=361, y=400)
+    
 
+def placeElements():
+    spenksLabel = tkinter.Label(window, height=2, fg="black", text="Spenkie Randomiser")
+    spenksLabel.configure(font = ("Arial", 20, "bold"))
+    
+    spenksButton = tkinter.Button(window, width=20, height=2, bg="black", fg="white", text="Generate a username", command=spenksGen)
+    
+    spenksButton.place(x=359, y=250)
+    spenksLabel.place(x=300, y=10)
 
-for i in range(0,5):
-    spenksGen()
-
+#spenksGen()
+placeElements()
+window.mainloop()
